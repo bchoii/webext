@@ -1,22 +1,44 @@
 {
-    "name": "My Utils",
-    "description": "My Utils",
-    "version": "1.0",
-    "manifest_version": 3,
-    "background": {
-        "service_worker": "background.js"
+  "name": "My Utils",
+  "description": "My Utils",
+  "version": "1.0",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "close-tab": {
+      "suggested_key": {
+        "default": "Alt+W"
+      },
+      "description": "Close Tab"
     },
-    "commands": {
-        "move-tab-to-end": {
-            "suggested_key": {
-                "default": "Ctrl+E"
-            },
-            "description": "Move Tab To End"
-        }
-    },
-    "permissions": ["tabs"],
-    "content_scripts": [{
-        "matches": ["*://*/*"],
-        "js": ["contentscript.js"]
-    }]
+    "move-tab-to-end": {
+      "suggested_key": {
+        "default": "Alt+R",
+        "mac": "Ctrl+E"
+      },
+      "description": "Move Tab To End"
+    }
+  },
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "activeTab",
+    "clipboardWrite",
+    "clipboardRead",
+    "webRequest",
+    "downloads",
+    "bookmarks",
+    "cookies",
+    "downloads",
+    "declarativeContent",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["contentscript.js"]
+    }
+  ]
 }
