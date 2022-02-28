@@ -38,3 +38,13 @@ chrome.commands.onCommand.addListener(async (command) => {
       break;
   }
 });
+
+chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
+  const datestring = `${new Date(
+    Date.now() - new Date().getTimezoneOffset() * 60 * 1000
+  )
+    .toISOString()
+    .substr(0, 10)}`;
+  const filename = `${datestring}/${item.filename}`;
+  suggest({ filename, conflictAction: 'overwrite' });
+});
