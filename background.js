@@ -1,10 +1,11 @@
 chrome.tabs.onCreated.addListener((newTab) => {
+  console.log('tab created');
   try {
     chrome.tabs.move(newTab.id, { index: -1 });
   } catch (error) {}
 });
 
-const closeTab = (tab) => chrome.tabs.remove(tab.id);
+const closeTab = (tab) => tab && chrome.tabs.remove(tab.id);
 
 const moveTabToEnd = async (currentTab) => {
   const currentIndex = currentTab.index;
@@ -26,11 +27,12 @@ const getCurrentTab = async () => {
 };
 
 chrome.commands.onCommand.addListener(async (command) => {
+  console.log('command', command);
   const currentTab = await getCurrentTab();
   switch (command) {
-    case 'close-tab':
-      await closeTab(currentTab);
-      break;
+    // case 'close-tab':
+    //   await closeTab(currentTab);
+    //   break;
     case 'move-tab-to-end':
       await moveTabToEnd(currentTab);
       break;
@@ -44,7 +46,7 @@ chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
     Date.now() - new Date().getTimezoneOffset() * 60 * 1000
   )
     .toISOString()
-    .substr(0, 10)}`;
+    .slice(0, 10)}`;
   const filename = `${datestring}/${item.filename}`;
   suggest({ filename, conflictAction: 'overwrite' });
 });

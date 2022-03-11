@@ -1,5 +1,10 @@
 const videos = document.getElementsByTagName('video');
 
+console.log({ videos });
+for (const video of videos) {
+  console.log({ video });
+}
+
 const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
 const _incVideoTime = (inc) => {
