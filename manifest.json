@@ -9,8 +9,7 @@
   "commands": {
     "move-tab-to-end": {
       "suggested_key": {
-        "default": "Alt+W",
-        "mac": "Ctrl+E"
+        "default": "Alt+W"
       },
       "description": "Move Tab To End"
     }
