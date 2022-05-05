@@ -6,6 +6,7 @@
   "background": {
     "service_worker": "background.js"
   },
+  "action": {},
   "commands": {
     "move-tab-to-end": {
       "suggested_key": {
@@ -27,12 +28,14 @@
     "cookies",
     "downloads",
     "declarativeContent",
-    "storage"
+    "storage",
+    "scripting"
   ],
   "content_scripts": [
     {
       "matches": ["*://*/*"],
       "js": ["contentscript.js"]
     }
-  ]
+  ],
+  "host_permissions": ["*://*/*"]
 }

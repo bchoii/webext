@@ -1,3 +1,7 @@
+console.log('My Utils');
+
+// Tabs
+
 chrome.tabs.onCreated.addListener((newTab) => {
   console.log('tab created');
   try {
@@ -50,3 +54,31 @@ chrome.downloads.onDeterminingFilename.addListener((item, suggest) => {
   const filename = `${datestring}/${item.filename}`;
   suggest({ filename, conflictAction: 'overwrite' });
 });
+
+// // Open In
+
+// chrome.contextMenus.create({
+//   id: '' + Date.now() + Math.random(),
+//   title: 'Go Incognito',
+//   //   contexts: ['page'],
+//   //   onclick: function (info, tab) {
+//   //     chrome.windows.create({ url: info.pageUrl, incognito: true });
+//   // },
+// });
+
+// // chrome.contextMenus.create({
+// //   title: 'Open Frameless',
+// //   contexts: ['page'],
+// //   onclick: function (info, tab) {
+// //     window.open(info.pageUrl, '_blank', 'toolbar=0,location=0,menubar=0');
+// //   },
+// // });
+
+// chrome.contextMenus.create({
+//   id: '' + Date.now() + Math.random(),
+//   title: 'Clone',
+//   //   contexts: ['page'],
+//   //   onclick: function (info, tab) {
+//   //     window.open(info.pageUrl, '_blank');
+//   //   },
+// });
